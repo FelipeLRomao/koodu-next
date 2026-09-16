@@ -47,6 +47,15 @@ a {
     border-bottom: 1px solid rgba(0, 0, 0, .06);
 }
 
+#logo-koodu{
+    width: 60px;
+    height: 52px;
+}
+
+.logo-name{
+    color: var(--purpleKoodu);
+}
+
 .nav-wrap {
     height: 78px;
     display: flex;
@@ -62,16 +71,7 @@ a {
     letter-spacing: -1.5px;
 }
 
-.brand-mark {
-    width: 32px;
-    height: 32px;
-    border-radius: 9px;
-    background: var(--purpleKoodu);
-    display: grid;
-    place-items: center;
-    font-size: 18px;
-    color: #101210;
-}
+
 
 .dot {
     color: #8ba928;
