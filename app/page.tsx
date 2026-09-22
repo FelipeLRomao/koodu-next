@@ -1,2 +1,264 @@
-import Link from "next/link"; import { ArrowUpRight, Check, Sparkles } from "lucide-react"; import SectionTitle from "@/components/SectionTitle"; import ServiceIcon from "@/components/ServiceIcon"; import { services, portfolio } from "@/lib/data";
-export default function Home(){return <main><section className="hero"><div className="container hero-grid"><div><span className="eyebrow">Agência web · São Paulo</span><h1>Seu negócio merece uma <em>presença digital</em> à altura.</h1><p>Criamos sites, lojas virtuais e experiências digitais sob medida para transformar sua marca em uma presença que gera confiança, oportunidades e vendas.</p><div className="actions"><Link className="btn btn-primary" href="/contato">Quero meu novo site <ArrowUpRight size={18}/></Link><Link className="btn btn-light" href="/portfolio">Ver projetos</Link></div></div><div className="hero-card"><div className="browser"><div className="browser-top"><i/><i/><i/></div><div className="browser-body"><div className="mock-logo">koodu.</div><div className="mock-title">Design que transforma visitas em negócios.</div><div className="mock-line"/><div className="mock-boxes"><div className="mock-box"/><div className="mock-box"/><div className="mock-box"/></div></div></div></div></div></section><div className="stats"><div className="container" style={{display:'contents'}}><div className="stat"><b>2015+</b><span>atuando em tecnologia</span></div><div className="stat"><b>100%</b><span>projetos personalizados</span></div><div className="stat"><b>BR + LATAM</b><span>atendimento onde sua empresa estiver</span></div></div></div><section className="section"><div className="container"><SectionTitle eyebrow="O que fazemos" title="Tudo o que sua presença digital precisa." text="Do primeiro wireframe à publicação, pensamos estratégia, design, desenvolvimento e performance em conjunto."/><div className="cards">{services.slice(0,6).map(s=><Link className="card" key={s.slug} href={'/'+s.slug}><div className="icon"><ServiceIcon name={s.icon}/></div><h3>{s.title}</h3><p>{s.short}</p></Link>)}</div></div></section><section className="section dark"><div className="container split"><div><SectionTitle eyebrow="Nosso jeito" title="Não entregamos só páginas. Criamos experiências." text="Um bom site precisa ser bonito, claro e, principalmente, útil para o negócio. Por isso, cada projeto nasce de uma conversa sobre seus objetivos."/><ul className="check-list"><li><Check size={18}/>Design responsivo para todos os dispositivos</li><li><Check size={18}/>Estrutura preparada para SEO</li><li><Check size={18}/>Performance e experiência de usuário</li><li><Check size={18}/>Arquitetura pensada para evolução</li></ul><Link className="btn btn-lime" href="/sobre">Conheça a Koodu <ArrowUpRight size={17}/></Link></div><div className="visual"><div className="orb"/><div className="visual-copy"><b>web + estratégia</b><p>Uma combinação de criatividade, tecnologia e visão de negócio para colocar sua empresa em movimento.</p></div></div></div></section><section className="section"><div className="container"><SectionTitle eyebrow="Como trabalhamos" title="Do briefing ao lançamento, sem complicação."/><div className="process"><div className="step"><span className="step-num">01 / Descoberta</span><h3>Entendemos</h3><p>Objetivos, público, diferenciais e necessidades do negócio.</p></div><div className="step"><span className="step-num">02 / Estratégia</span><h3>Planejamos</h3><p>Arquitetura, conteúdo, jornada e direção visual do projeto.</p></div><div className="step"><span className="step-num">03 / Criação</span><h3>Construímos</h3><p>Design e desenvolvimento com foco em qualidade e responsividade.</p></div><div className="step"><span className="step-num">04 / Evolução</span><h3>Lançamos</h3><p>Publicação, acompanhamento e próximos passos para sua presença digital.</p></div></div></div></section><section className="section"><div className="container"><SectionTitle eyebrow="Portfólio" title="Projetos pensados para gerar presença e resultado." text="Alguns exemplos de como podemos transformar diferentes necessidades em experiências digitais."/><div className="portfolio-grid">{portfolio.slice(0,4).map((p,i)=><div className="project" key={p.title}><div className="project-content"><span className="tag">{p.tag}</span><h3>{p.title}</h3><p>{p.text}</p></div></div>)}</div><div style={{marginTop:28}}><Link className="btn btn-light" href="/portfolio">Explorar portfólio <ArrowUpRight size={17}/></Link></div></div></section><section className="cta"><div className="container"><div className="cta-box"><div><span className="eyebrow">Vamos conversar</span><h2>Tem uma ideia? Vamos transformar em um projeto.</h2></div><Link className="btn btn-primary" href="/contato">Solicitar orçamento <ArrowUpRight size={18}/></Link></div></div></section></main>}
+import Link from "next/link";
+import { ArrowUpRight, Check, Sparkles } from "lucide-react";
+import SectionTitle from "@/components/SectionTitle";
+import ServiceIcon from "@/components/ServiceIcon";
+import { services, portfolio } from "@/lib/data";
+import EmblaCarousel, { SlideItem } from '@/components/EmblaCarousel'
+import { EmblaOptionsType } from 'embla-carousel'
+
+const OPTIONS: EmblaOptionsType = {
+  loop: true,
+  align: 'start',
+};
+
+const SLIDES: SlideItem[] = [
+  {
+    id: 1,
+    title: 'Projeto Alpha',
+    description: 'Desenvolvimento Web moderno',
+    imageSrc: '/images/foto1.jpg',
+    imageAlt: 'Captura de tela do Projeto Alpha',
+  },
+  {
+    id: 2,
+    title: 'Projeto Beta',
+    description: 'Aplicativo Mobile híbrido',
+    imageSrc: '/images/foto2.jpg',
+    imageAlt: 'Design do aplicativo Beta',
+  },
+  {
+    id: 3,
+    title: 'Projeto Gamma',
+    description: 'Design System & UI/UX',
+    imageSrc: '/images/foto3.jpg',
+    imageAlt: 'Componentes do Design System Gamma',
+  },
+];
+
+export default function Home() {
+  return (
+    <main>
+      <section className="hero">
+        <div className="container hero-grid">
+          <div>
+            <span className="eyebrow">Agência web · São Paulo</span>
+            <h1>
+              Seu negócio merece uma <em>presença digital</em> à altura.
+            </h1>
+            <p>
+              Criamos sites, lojas virtuais e experiências digitais sob medida
+              para transformar sua marca em uma presença que gera confiança,
+              oportunidades e vendas.
+            </p>
+            <div className="actions">
+              <Link className="btn btn-primary" href="/contato">
+                Quero meu novo site <ArrowUpRight size={18} />
+              </Link>
+              <Link className="btn btn-light" href="/portfolio">
+                Ver projetos
+              </Link>
+            </div>
+          </div>
+          <div className="hero-card">
+            <div className="browser">
+              <div className="browser-top">
+                <i />
+                <i />
+                <i />
+              </div>
+              <div className="browser-body">
+                <div className="mock-logo">koodu.</div>
+                <div className="mock-title">
+                  Design que transforma visitas em negócios.
+                </div>
+                <div className="mock-line" />
+                <div className="mock-boxes">
+                  <div className="mock-box" />
+                  <div className="mock-box" />
+                  <div className="mock-box" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div className="stats">
+        <div className="container" style={{ display: "contents" }}>
+          <div className="stat">
+            <b>2015+</b>
+            <span>atuando em tecnologia</span>
+          </div>
+          <div className="stat">
+            <b>100%</b>
+            <span>projetos personalizados</span>
+          </div>
+          <div className="stat">
+            <b>BR + LATAM</b>
+            <span>atendimento onde sua empresa estiver</span>
+          </div>
+        </div>
+      </div>
+      {/* Carrosel */}
+  <section className="section dark">
+  <div className="container-projetos">
+    {/* Título Centralizado */}
+    <div className="w-full text-center mb-8">
+      <SectionTitle
+        eyebrow="Nossos projetos"
+        title="Exemplos de Projetos Desenvolvidos."
+      />
+    </div>
+
+    {/* Carrossel ajustado para preencher a largura do container-projetos */}
+    <div className="w-full">
+      <EmblaCarousel slides={SLIDES} options={OPTIONS} />
+    </div>
+  </div>
+</section>  
+{/* O que fazemos */}
+      <section className="section">
+        <div className="container">
+          <SectionTitle
+            eyebrow="O que fazemos"
+            title="Tudo o que sua presença digital precisa."
+            text="Do primeiro wireframe à publicação, pensamos estratégia, design, desenvolvimento e performance em conjunto."
+          />
+          <div className="cards">
+            {services.slice(0, 6).map((s) => (
+              <Link className="card" key={s.slug} href={"/" + s.slug}>
+                <div className="icon">
+                  <ServiceIcon name={s.icon} />
+                </div>
+                <h3>{s.title}</h3>
+                <p>{s.short}</p>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section dark">
+        <div className="container split">
+          <div>
+            <SectionTitle
+              eyebrow="Nosso jeito"
+              title="Não entregamos só páginas. Criamos experiências."
+              text="Um bom site precisa ser bonito, claro e, principalmente, útil para o negócio. Por isso, cada projeto nasce de uma conversa sobre seus objetivos."
+            />
+            <ul className="check-list">
+              <li>
+                <Check size={18} />
+                Design responsivo para todos os dispositivos
+              </li>
+              <li>
+                <Check size={18} />
+                Estrutura preparada para SEO
+              </li>
+              <li>
+                <Check size={18} />
+                Performance e experiência de usuário
+              </li>
+              <li>
+                <Check size={18} />
+                Arquitetura pensada para evolução
+              </li>
+            </ul>
+            <Link className="btn btn-lime" href="/sobre">
+              Conheça a Koodu <ArrowUpRight size={17} />
+            </Link>
+          </div>
+          <div className="visual">
+            <div className="orb" />
+            <div className="visual-copy">
+              <b>web + estratégia</b>
+              <p>
+                Uma combinação de criatividade, tecnologia e visão de negócio
+                para colocar sua empresa em movimento.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="container">
+          <SectionTitle
+            eyebrow="Como trabalhamos"
+            title="Do briefing ao lançamento, sem complicação."
+          />
+          <div className="process">
+            <div className="step">
+              <span className="step-num">01 / Descoberta</span>
+              <h3>Entendemos</h3>
+              <p>Objetivos, público, diferenciais e necessidades do negócio.</p>
+            </div>
+            <div className="step">
+              <span className="step-num">02 / Estratégia</span>
+              <h3>Planejamos</h3>
+              <p>
+                Arquitetura, conteúdo, jornada e direção visual do projeto.
+              </p>
+            </div>
+            <div className="step">
+              <span className="step-num">03 / Criação</span>
+              <h3>Construímos</h3>
+              <p>
+                Design e desenvolvimento com foco em qualidade e
+                responsividade.
+              </p>
+            </div>
+            <div className="step">
+              <span className="step-num">04 / Evolução</span>
+              <h3>Lançamos</h3>
+              <p>
+                Publicação, acompanhamento e próximos passos para sua presença
+                digital.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="container">
+          <SectionTitle
+            eyebrow="Portfólio"
+            title="Projetos pensados para gerar presença e resultado."
+            text="Alguns exemplos de como podemos transformar diferentes necessidades em experiências digitais."
+          />
+          <div className="portfolio-grid">
+            {portfolio.slice(0, 4).map((p, i) => (
+              <div className="project" key={p.title}>
+                <div className="project-content">
+                  <span className="tag">{p.tag}</span>
+                  <h3>{p.title}</h3>
+                  <p>{p.text}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div style={{ marginTop: 28 }}>
+            <Link className="btn btn-light" href="/portfolio">
+              Explorar portfólio <ArrowUpRight size={17} />
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      <section className="cta">
+        <div className="container">
+          <div className="cta-box">
+            <div>
+              <span className="eyebrow">Vamos conversar</span>
+              <h2>Tem uma ideia? Vamos transformar em um projeto.</h2>
+            </div>
+            <Link className="btn btn-primary" href="/contato">
+              Solicitar orçamento <ArrowUpRight size={18} />
+            </Link>
+          </div>
+        </div>
+      </section>
+    </main>
+  );
+}
