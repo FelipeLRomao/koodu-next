@@ -1,3 +1,48 @@
 "use client";
-import { FormEvent, useState } from "react"; import { ArrowUpRight, CheckCircle2 } from "lucide-react"; import { whatsapp } from "@/lib/data";
-export default function ContactForm(){const [sent,setSent]=useState(false); function submit(e:FormEvent<HTMLFormElement>){e.preventDefault();const f=new FormData(e.currentTarget);const msg=`Olá Koodu! Meu nome é ${f.get("name")}.\n\nE-mail: ${f.get("email")}\nEmpresa: ${f.get("company")||"Não informado"}\nServiço: ${f.get("service")}\n\nProjeto: ${f.get("message")}`;window.open(`https://wa.me/${whatsapp}?text=${encodeURIComponent(msg)}`,"_blank");setSent(true)} return sent?<div className="form-success"><CheckCircle2 size={46}/><h3>Mensagem preparada!</h3><p>O WhatsApp foi aberto com as informações do seu projeto. É só enviar para falar com a Koodu.</p><button className="btn btn-dark" onClick={()=>setSent(false)}>Voltar ao formulário</button></div>:<form className="contact-form" onSubmit={submit}><div className="field-row"><label>Seu nome<input required name="name" placeholder="Como podemos chamar você?"/></label><label>E-mail<input required type="email" name="email" placeholder="voce@empresa.com"/></label></div><div className="field-row"><label>Empresa<input name="company" placeholder="Nome da empresa"/></label><label>O que você precisa?<select required name="service"><option value="">Selecione um serviço</option><option>Site institucional</option><option>Loja virtual</option><option>Landing page</option><option>SEO & performance</option><option>Manutenção / evolução</option><option>Outro projeto</option></select></label></div><label>Conte um pouco sobre o projeto<textarea required name="message" rows={5} placeholder="Objetivo, prazo, funcionalidades, referências..."/></label><button className="btn btn-primary" type="submit">Solicitar orçamento <ArrowUpRight size={18}/></button><small>Ao enviar, você será direcionado ao WhatsApp comercial da Koodu.</small></form>}
+import { FormEvent, useState } from "react"; 
+import { ArrowUpRight, CheckCircle2 } from "lucide-react";
+import { whatsapp } from "@/lib/data";
+
+export default function ContactForm(){
+  const [sent,setSent]=useState(false); 
+  function submit(e:FormEvent<HTMLFormElement>){e.preventDefault();
+    const f=new FormData(e.currentTarget);const msg=`Olá Koodu! Meu nome é ${f.get("name")}.\n\nE-mail: 
+    ${f.get("email")}\nEmpresa: ${f.get("company")||"Não informado"}\nServiço: 
+    ${f.get("service")}\n\nProjeto: 
+    ${f.get("message")}`;
+    window.open(`https://wa.me/${whatsapp}?text=${encodeURIComponent(msg)}`,"_blank");
+    setSent(true)
+  } 
+  return sent?
+  <div className="form-success">
+    <CheckCircle2 size={46}/>
+    <h3>Mensagem preparada!</h3>
+    <p>O WhatsApp foi aberto com as informações do seu projeto. É só enviar para falar com a Koodu.</p>
+    <button className="btn btn-dark" onClick={()=>setSent(false)}>Voltar ao formulário</button>
+    </div>
+    :
+    <form className="contact-form" onSubmit={submit}>
+      <div className="field-row">
+        <label>Seu nome<input required name="name" placeholder="Como podemos chamar você?"/></label>
+        <label>E-mail<input required type="email" name="email" placeholder="voce@empresa.com"/></label>
+        </div>
+        <div className="field-row">
+          <label>Empresa<input name="company" placeholder="Nome da empresa"/></label>
+          <label>O que você precisa?
+            <select required name="service">
+              <option value="">Selecione um serviço</option>
+              <option>Site institucional</option>
+              <option>Loja virtual</option>
+              <option>Landing page</option>
+              <option>SEO & performance</option>
+              <option>Manutenção / evolução</option>
+              <option>Outro projeto</option>
+            </select>
+          </label>
+        </div>
+        <label>Conte um pouco sobre o projeto
+          <textarea required name="message" rows={5} placeholder="Objetivo, prazo, funcionalidades, referências..."/></label>
+        <button className="btn btn-primary" type="submit">Solicitar orçamento <ArrowUpRight size={18}/></button>
+        <small>Ao enviar, você será direcionado ao WhatsApp comercial da Koodu.</small>
+      </form>
+    }
