@@ -1,4 +1,4 @@
-export const whatsapp = "5511999999999"; // Troque pelo WhatsApp comercial da Koodu.
+export const whatsapp = "5511979790803"; // Troque pelo WhatsApp comercial da Koodu.
 export const companyEmail = "contato@koodu.com.br";
 
 export const services = [
