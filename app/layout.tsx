@@ -1,5 +1,6 @@
+
 import type { Metadata } from "next";
-import { GoogleAnalytics } from "@next/third-parties/google";
+import Script from "next/script";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsApp from "@/components/WhatsApp";
@@ -35,7 +36,21 @@ export default function RootLayout({
         {children}
         <WhatsApp />
         <Footer />
-        <GoogleAnalytics gaId="G-ZJZ9WFZZSB" />
+
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-ZJZ9WFZZSB"
+          strategy="afterInteractive"
+        />
+
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){window.dataLayer.push(arguments);}
+            window.gtag = gtag;
+            gtag('js', new Date());
+            gtag('config', 'G-ZJZ9WFZZSB');
+          `}
+        </Script>
       </body>
     </html>
   );
